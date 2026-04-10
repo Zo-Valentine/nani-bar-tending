@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-obsidian: #0D0D0D;
+  --color-gold: #D4AF37;
+  --color-rose: #E5C7C5;
+
+  --color-background: var(--color-obsidian);
+  --color-foreground: #FFFFFF;
+
+  --color-card: #141414;
+  --color-card-foreground: #FFFFFF;
+
+  --color-popover: #141414;
+  --color-popover-foreground: #FFFFFF;
+
+  --color-primary: var(--color-gold);
+  --color-primary-foreground: var(--color-obsidian);
+
+  --color-secondary: var(--color-rose);
+  --color-secondary-foreground: var(--color-obsidian);
+
+  --color-muted: #1A1A1A;
+  --color-muted-foreground: #A1A1A1;
+
+  --color-accent: var(--color-gold);
+  --color-accent-foreground: var(--color-obsidian);
+
+  --color-destructive: #7f1d1d;
+  --color-destructive-foreground: #FFFFFF;
+
+  --color-border: rgba(212, 175, 55, 0.2);
+  --color-input: rgba(212, 175, 55, 0.1);
+  --color-ring: var(--color-gold);
+
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F2D472 50%, #D4AF37 100%);
+}
+
+.gold-text-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F2D472 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rose-glass {
+  background: rgba(229, 199, 197, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(229, 199, 197, 0.1);
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+}
+
+/* Mapbox Popup Overrides */
+.mapboxgl-popup-content {
+  background: transparent !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  border-top-color: rgba(212, 175, 55, 0.3) !important;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  border-bottom-color: #0D0D0D !important;
+}
